@@ -152,6 +152,7 @@ constructor: function( args ) {
             "JBrowse/View/Track/Alignments2": "BAM",
             "JBrowse/View/Track/SNPCoverage": "BAM",
             "JBrowse/Store/BigWig": "quantitative",
+            "JBrowse/Store/SeqFeature/BigWig": "quantitative",
             "JBrowse/Store/SeqFeature/BAM": "BAM",
             "JBrowse/Store/SeqFeature/BAMCombination": "BAM",
             "JBrowse/Store/SeqFeature/Combination": "set",
