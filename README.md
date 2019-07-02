@@ -9,6 +9,10 @@ To install jbrowse, visit http://jbrowse.org/blog and download the latest JBrows
 
 To install from GitHub, you can simply clone the repo and run the setup.sh script
 
+    #install git, npm, and yarn
+    sudo apt-get install git npm  #for example
+    sudo npm install -g yarn
+
     git clone https://github.com/GMOD/jbrowse
     cd jbrowse
     ./setup.sh
@@ -79,6 +83,11 @@ You can also optionally run build steps to create the minimized codebase. Extra 
     make -f build/Makefile
 
 To build the Electron app (JBrowse desktop app), run the following
+
+    #install wine for building the Windows app
+    sudo apt-get install wine-stable #for example
+    #if you haven't already, run setup
+    ./setup.sh
 
     npm install -g electron-packager
     make -f build/Makefile release-electron-all
