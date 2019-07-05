@@ -1,0 +1,96 @@
+{
+   "plugins" : {
+      "FeatureSequence" : {
+         "location" : "./plugins/FeatureSequence"
+      }
+   },
+   "tracks" : [
+      {
+         "category" : "Externally Sourced Resources",
+         "label" : "UCSC Conservation",
+         "variance_band" : 0,
+         "unsafeMouseover" : true,
+         "autoscale" : "local",
+         "type" : "JBrowse/View/Track/Wiggle/XYPlot",
+         "urlTemplate" : "https://s3.amazonaws.com/wormbase-modencode/UCSC/ce11.phastCons26way.bw",
+         "unsafePopup" : true,
+         "key" : "UCSC Conservation",
+         "metadata" : {
+            "shortInfo" : "UCSC Nematode conservation calculated across 26 species. For more information about these data, see the <a href='http://hgdownload.soe.ucsc.edu/goldenPath/ce11/phastCons26way/'>README at UCSC</a>. "
+         },
+         "style" : {
+            "height" : 20,
+            "pos_color"  : "grey"
+         },
+         "storeClass" : "JBrowse/Store/SeqFeature/BigWig"
+      },
+      {
+         "label" : "DNA",
+         "compress" : 1,
+         "unsafeMouseover" : true,
+         "codonStarts" : "[ATG]",
+         "urlTemplate" : "https://s3.amazonaws.com/wormbase-modencode/jbrowse/data/c_elegans_PRJNA13758/seq/{refseq_dirpath}/{refseq}-",
+         "unsafePopup" : true,
+         "key" : "Reference sequence (DNA)",
+         "storeClass" : "JBrowse/Store/Sequence/StaticChunked",
+         "type" : "SequenceTrack",
+         "chunkSize" : 80000
+      },
+      {
+         "unsafeMouseover" : true,
+         "maxExportSpan" : 50000000,
+         "compress" : 1,
+         "glyph" : "{geneGlyph}",
+         "menuTemplate" : [
+            {
+               "label" : "View details"
+            },
+            {
+               "label" : "Zoom to this gene"
+            },
+            {
+               "label" : "Highlight this gene"
+            },
+            {
+               "content" : "function(track,feature){return track.browser.plugins.FeatureSequence.callFxn(track, feature); }",
+               "iconClass" : "dijitIconDatabase",
+               "label" : "View Sequence",
+               "action" : "contentDialog"
+            }
+         ],
+         "maxHeight" : 3000,
+         "category" : "Genes/Curated Genes",
+         "storeClass" : "JBrowse/Store/SeqFeature/NCList",
+         "key" : "Curated Genes",
+         "urlTemplate" : "https://staging.wormbase.org/tools/genome/jbrowse/data/c_elegans_PRJNA13758/tracks/Curated_Genes/{refseq}/trackData.jsonz",
+         "unsafePopup" : true,
+         "label" : "Curated_Genes",
+         "style" : {
+            "color" : "{geneColor}",
+            "height" : "function(f) {var type = f.get('type'); if (type == 'CDS') {return 10;} return 6;  }",
+            "className" : "feature",
+            "label" : "{geneLabel}"
+         },
+         "onClick" : {
+            "url" : "{geneURL}",
+            "title" : "Feature in WormBase",
+            "action" : "iframeDialog",
+            "label" : "{geneLinkLabel}"
+         },
+         "metadata" : {
+            "shortInfo" : "Protein-coding gene structures result from the integration of a variety of prediction methods and data sources followed by manual review and revison by WormBase curators. tRNAs are predicted by tRNAscan, and other non-coding RNA transcripts are taken from a variety of literature sources. The purple and blue colors indicate transcripts on the forward and reverse strands respectively. Dark purple areas represent 5' and 3' UTRs of protein-coding transcripts, assigned automatically using the extents of overlapping ESTs and full-length cDNAs. The UTR predictions have not been reviewed by WormBase curators, and some are known to contain artifacts. Grey transcripts represent either non-coding transcripts of protein coding genes or transcripts of non-coding genes."
+         },
+         "trackType" : "CanvasFeatures",
+         "type" : "CanvasFeatures"
+      }
+   ],
+   "names" : {
+      "url" : "https://staging.wormbase.org/tools/genome/jbrowse/data/c_elegans_PRJNA13758/names/",
+      "type" : "Hash"
+   },
+   "include" : [
+      "../functions.conf"
+   ],
+   "dataset_id" : "c_elegans",
+   "formatVersion" : 1
+}

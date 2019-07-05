@@ -78,6 +78,6 @@ release-min: node_modules
 	$(ZIP) $(RELEASE_MIN).zip $(RELEASE_MIN)/;
 
 clean:
-	git clean -ffdxq --exclude=/plugins/ --exclude=/node_modules/ --exclude=/extlib/
+	git clean -ffdxq --exclude=/initial_data/  --exclude=/plugins/ --exclude=/node_modules/ --exclude=/extlib/
 
 .PHONY: all clean jbrowse docs doc release release-min release-dev plugins-min release-electron-all release-electron-linux release-electron-win32 release-electron-darwin
